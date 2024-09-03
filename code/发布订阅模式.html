@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>发布订阅模式 | 全明笔记</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="张全明的个人笔记">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.484694f3.css" as="style"><link rel="preload" href="/assets/js/app.07d4e7d8.js" as="script"><link rel="preload" href="/assets/js/2.e756895e.js" as="script"><link rel="preload" href="/assets/js/14.8e9572dd.js" as="script"><link rel="prefetch" href="/assets/js/10.9dcd3981.js"><link rel="prefetch" href="/assets/js/11.7c3a4891.js"><link rel="prefetch" href="/assets/js/12.9123d821.js"><link rel="prefetch" href="/assets/js/13.dc2b3bbc.js"><link rel="prefetch" href="/assets/js/15.0831d9fb.js"><link rel="prefetch" href="/assets/js/16.fff0091e.js"><link rel="prefetch" href="/assets/js/17.13d701e1.js"><link rel="prefetch" href="/assets/js/18.c01d73d7.js"><link rel="prefetch" href="/assets/js/19.6d8da221.js"><link rel="prefetch" href="/assets/js/20.7e3bfbe7.js"><link rel="prefetch" href="/assets/js/21.d67b0029.js"><link rel="prefetch" href="/assets/js/22.a1d1221b.js"><link rel="prefetch" href="/assets/js/23.97f7c972.js"><link rel="prefetch" href="/assets/js/24.f25bbb61.js"><link rel="prefetch" href="/assets/js/25.886c2813.js"><link rel="prefetch" href="/assets/js/26.d354a60e.js"><link rel="prefetch" href="/assets/js/27.8165f251.js"><link rel="prefetch" href="/assets/js/28.38db902f.js"><link rel="prefetch" href="/assets/js/29.d089321c.js"><link rel="prefetch" href="/assets/js/3.c090ecd3.js"><link rel="prefetch" href="/assets/js/30.7f597fdf.js"><link rel="prefetch" href="/assets/js/31.00125d26.js"><link rel="prefetch" href="/assets/js/32.1b584e55.js"><link rel="prefetch" href="/assets/js/33.b6331f3f.js"><link rel="prefetch" href="/assets/js/34.021e8dad.js"><link rel="prefetch" href="/assets/js/35.2b1e189b.js"><link rel="prefetch" href="/assets/js/36.4643cf1b.js"><link rel="prefetch" href="/assets/js/37.ff936690.js"><link rel="prefetch" href="/assets/js/4.55092137.js"><link rel="prefetch" href="/assets/js/5.02018b5a.js"><link rel="prefetch" href="/assets/js/6.bd7b0c2a.js"><link rel="prefetch" href="/assets/js/7.711e75c5.js"><link rel="prefetch" href="/assets/js/8.35b709e8.js"><link rel="prefetch" href="/assets/js/9.029996af.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.484694f3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">全明笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/summary/" class="nav-link">
+  知识总结
+</a></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  工具类
+</a></div><div class="nav-item"><a href="/links/" class="nav-link">
+  学习资料
+</a></div><div class="nav-item"><a href="/code/" class="nav-link router-link-active">
+  手写代码
+</a></div><div class="nav-item"><a href="https://www.mingme.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/zhangquanming/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/summary/" class="nav-link">
+  知识总结
+</a></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  工具类
+</a></div><div class="nav-item"><a href="/links/" class="nav-link">
+  学习资料
+</a></div><div class="nav-item"><a href="/code/" class="nav-link router-link-active">
+  手写代码
+</a></div><div class="nav-item"><a href="https://www.mingme.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/zhangquanming/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>手写代码</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/code/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/code/防抖.html" class="sidebar-link">防抖</a></li><li><a href="/code/节流.html" class="sidebar-link">节流</a></li><li><a href="/code/浅比较与深比较.html" class="sidebar-link">浅比较与深比较</a></li><li><a href="/code/浅拷贝与深拷贝.html" class="sidebar-link">浅拷贝与深拷贝</a></li><li><a href="/code/Promise.html" class="sidebar-link">实现 Promise</a></li><li><a href="/code/new.html" class="sidebar-link">实现 new</a></li><li><a href="/code/instanceof.html" class="sidebar-link">实现 instanceof</a></li><li><a href="/code/compose.html" class="sidebar-link">实现 compose 函数</a></li><li><a href="/code/模拟setInterval.html" class="sidebar-link">settimeout 模拟实现 setinterval</a></li><li><a href="/code/call、apply、bind.html" class="sidebar-link">call、apply、bind</a></li><li><a href="/code/发布订阅模式.html" class="active sidebar-link">发布订阅模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/code/发布订阅模式.html#实现一个发布订阅模式拥有-on-emit-once-off-方法。" class="sidebar-link">实现一个发布订阅模式拥有 on emit once off 方法。</a></li><li class="sidebar-sub-header"><a href="/code/发布订阅模式.html#测试" class="sidebar-link">测试</a></li></ul></li><li><a href="/code/扁平数组与JSON树结构互转.html" class="sidebar-link">扁平数组与 JSON 树结构互转</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="发布订阅模式"><a href="#发布订阅模式" class="header-anchor">#</a> 发布订阅模式</h1> <h2 id="实现一个发布订阅模式拥有-on-emit-once-off-方法。"><a href="#实现一个发布订阅模式拥有-on-emit-once-off-方法。" class="header-anchor">#</a> 实现一个发布订阅模式拥有 on emit once off 方法。</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">EventEmitter</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>events <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 实现订阅</span>
+  <span class="token function">on</span><span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">[</span>type<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">[</span>type<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>callback<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">[</span>type<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 删除订阅</span>
+  <span class="token function">off</span><span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">[</span>type<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">[</span>type<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">[</span>type<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> item <span class="token operator">!==</span> callback
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 值执行一次订阅</span>
+  <span class="token function">once</span><span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">off</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> fn<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> fn<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 触发事件</span>
+  <span class="token function">emit</span><span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> <span class="token operator">...</span>rest</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">[</span>type<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">[</span>type<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> rest<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="测试"><a href="#测试" class="header-anchor">#</a> 测试</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> event <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EventEmitter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">handle</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">rest</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>rest<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+event<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> handle<span class="token punctuation">)</span>
+event<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment">// [1,2,3,4]</span>
+
+event<span class="token punctuation">.</span><span class="token function">off</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> handle<span class="token punctuation">)</span>
+event<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+
+event<span class="token punctuation">.</span><span class="token function">once</span><span class="token punctuation">(</span><span class="token string">'dbClick'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">123456</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+event<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'dbClick'</span><span class="token punctuation">)</span> <span class="token comment">// 123456</span>
+event<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'dbClick'</span><span class="token punctuation">)</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">3/22/2022, 6:47:54 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/code/call、apply、bind.html" class="prev">
+        call、apply、bind
+      </a></span> <span class="next"><a href="/code/扁平数组与JSON树结构互转.html">
+        扁平数组与 JSON 树结构互转
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.07d4e7d8.js" defer></script><script src="/assets/js/2.e756895e.js" defer></script><script src="/assets/js/14.8e9572dd.js" defer></script>
+  </body>
+</html>

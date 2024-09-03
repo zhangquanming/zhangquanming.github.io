@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>call、apply、bind | 全明笔记</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="张全明的个人笔记">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.484694f3.css" as="style"><link rel="preload" href="/assets/js/app.07d4e7d8.js" as="script"><link rel="preload" href="/assets/js/2.e756895e.js" as="script"><link rel="preload" href="/assets/js/10.9dcd3981.js" as="script"><link rel="prefetch" href="/assets/js/11.7c3a4891.js"><link rel="prefetch" href="/assets/js/12.9123d821.js"><link rel="prefetch" href="/assets/js/13.dc2b3bbc.js"><link rel="prefetch" href="/assets/js/14.8e9572dd.js"><link rel="prefetch" href="/assets/js/15.0831d9fb.js"><link rel="prefetch" href="/assets/js/16.fff0091e.js"><link rel="prefetch" href="/assets/js/17.13d701e1.js"><link rel="prefetch" href="/assets/js/18.c01d73d7.js"><link rel="prefetch" href="/assets/js/19.6d8da221.js"><link rel="prefetch" href="/assets/js/20.7e3bfbe7.js"><link rel="prefetch" href="/assets/js/21.d67b0029.js"><link rel="prefetch" href="/assets/js/22.a1d1221b.js"><link rel="prefetch" href="/assets/js/23.97f7c972.js"><link rel="prefetch" href="/assets/js/24.f25bbb61.js"><link rel="prefetch" href="/assets/js/25.886c2813.js"><link rel="prefetch" href="/assets/js/26.d354a60e.js"><link rel="prefetch" href="/assets/js/27.8165f251.js"><link rel="prefetch" href="/assets/js/28.38db902f.js"><link rel="prefetch" href="/assets/js/29.d089321c.js"><link rel="prefetch" href="/assets/js/3.c090ecd3.js"><link rel="prefetch" href="/assets/js/30.7f597fdf.js"><link rel="prefetch" href="/assets/js/31.00125d26.js"><link rel="prefetch" href="/assets/js/32.1b584e55.js"><link rel="prefetch" href="/assets/js/33.b6331f3f.js"><link rel="prefetch" href="/assets/js/34.021e8dad.js"><link rel="prefetch" href="/assets/js/35.2b1e189b.js"><link rel="prefetch" href="/assets/js/36.4643cf1b.js"><link rel="prefetch" href="/assets/js/37.ff936690.js"><link rel="prefetch" href="/assets/js/4.55092137.js"><link rel="prefetch" href="/assets/js/5.02018b5a.js"><link rel="prefetch" href="/assets/js/6.bd7b0c2a.js"><link rel="prefetch" href="/assets/js/7.711e75c5.js"><link rel="prefetch" href="/assets/js/8.35b709e8.js"><link rel="prefetch" href="/assets/js/9.029996af.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.484694f3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">全明笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/summary/" class="nav-link">
+  知识总结
+</a></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  工具类
+</a></div><div class="nav-item"><a href="/links/" class="nav-link">
+  学习资料
+</a></div><div class="nav-item"><a href="/code/" class="nav-link router-link-active">
+  手写代码
+</a></div><div class="nav-item"><a href="https://www.mingme.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/zhangquanming/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/summary/" class="nav-link">
+  知识总结
+</a></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  工具类
+</a></div><div class="nav-item"><a href="/links/" class="nav-link">
+  学习资料
+</a></div><div class="nav-item"><a href="/code/" class="nav-link router-link-active">
+  手写代码
+</a></div><div class="nav-item"><a href="https://www.mingme.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/zhangquanming/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>手写代码</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/code/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/code/防抖.html" class="sidebar-link">防抖</a></li><li><a href="/code/节流.html" class="sidebar-link">节流</a></li><li><a href="/code/浅比较与深比较.html" class="sidebar-link">浅比较与深比较</a></li><li><a href="/code/浅拷贝与深拷贝.html" class="sidebar-link">浅拷贝与深拷贝</a></li><li><a href="/code/Promise.html" class="sidebar-link">实现 Promise</a></li><li><a href="/code/new.html" class="sidebar-link">实现 new</a></li><li><a href="/code/instanceof.html" class="sidebar-link">实现 instanceof</a></li><li><a href="/code/compose.html" class="sidebar-link">实现 compose 函数</a></li><li><a href="/code/模拟setInterval.html" class="sidebar-link">settimeout 模拟实现 setinterval</a></li><li><a href="/code/call、apply、bind.html" class="active sidebar-link">call、apply、bind</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/code/call、apply、bind.html#call" class="sidebar-link">call</a></li><li class="sidebar-sub-header"><a href="/code/call、apply、bind.html#apply" class="sidebar-link">apply</a></li><li class="sidebar-sub-header"><a href="/code/call、apply、bind.html#bind" class="sidebar-link">bind</a></li></ul></li><li><a href="/code/发布订阅模式.html" class="sidebar-link">发布订阅模式</a></li><li><a href="/code/扁平数组与JSON树结构互转.html" class="sidebar-link">扁平数组与 JSON 树结构互转</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="call、apply、bind"><a href="#call、apply、bind" class="header-anchor">#</a> call、apply、bind</h1> <h2 id="call"><a href="#call" class="header-anchor">#</a> call</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myCall</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">context <span class="token operator">=</span> window<span class="token punctuation">,</span> <span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  content<span class="token punctuation">.</span>fn <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token keyword">let</span> res <span class="token operator">=</span> content<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>
+  <span class="token keyword">delete</span> content<span class="token punctuation">.</span>fn
+  <span class="token keyword">return</span> res
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="apply"><a href="#apply" class="header-anchor">#</a> apply</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">myApply</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">content <span class="token operator">=</span> window<span class="token punctuation">,</span> args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  content<span class="token punctuation">.</span>fn <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token keyword">let</span> res <span class="token operator">=</span> content<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>
+  <span class="token keyword">delete</span> content<span class="token punctuation">.</span>fn
+  <span class="token keyword">return</span> res
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="bind"><a href="#bind" class="header-anchor">#</a> bind</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">mybind</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">content <span class="token operator">=</span> window<span class="token punctuation">,</span> <span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> fn <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  context<span class="token punctuation">[</span>fn<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span>
+  <span class="token keyword">let</span> _this <span class="token operator">=</span> <span class="token keyword">this</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">result</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>innerArgs</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 第一种情况 :若是将 bind 绑定之后的函数当作构造函数，通过 new 操作符使用，则不绑定传入的 this，而是将 this 指向实例化出来的对象</span>
+    <span class="token comment">// 此时由于new操作符作用  this指向result实例对象  而result又继承自传入的_this 根据原型链知识可得出以下结论</span>
+    <span class="token comment">// this.__proto__ === result.prototype   //this instanceof result =&gt;true</span>
+    <span class="token comment">// this.__proto__.__proto__ === result.prototype.__proto__ === _this.prototype; //this instanceof _this =&gt;true</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token keyword">instanceof</span> <span class="token class-name">_this</span> <span class="token operator">===</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 此时this指向指向result的实例  这时候不需要改变this指向</span>
+      <span class="token keyword">this</span><span class="token punctuation">[</span>fn<span class="token punctuation">]</span> <span class="token operator">=</span> _this
+      <span class="token keyword">this</span><span class="token punctuation">[</span>fn<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">[</span><span class="token operator">...</span>args<span class="token punctuation">,</span> <span class="token operator">...</span>innerArgs<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//这里使用es6的方法让bind支持参数合并</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 如果只是作为普通函数调用  那就很简单了 直接改变this指向为传入的context</span>
+      context<span class="token punctuation">[</span>fn<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">[</span><span class="token operator">...</span>args<span class="token punctuation">,</span> <span class="token operator">...</span>innerArgs<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 如果绑定的是构造函数 那么需要继承构造函数原型属性和方法</span>
+  <span class="token comment">// 实现继承的方式: 使用Object.create</span>
+  result<span class="token punctuation">.</span>prototype <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> result
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">3/23/2022, 10:07:09 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/code/模拟setInterval.html" class="prev">
+        settimeout 模拟实现 setinterval
+      </a></span> <span class="next"><a href="/code/发布订阅模式.html">
+        发布订阅模式
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.07d4e7d8.js" defer></script><script src="/assets/js/2.e756895e.js" defer></script><script src="/assets/js/10.9dcd3981.js" defer></script>
+  </body>
+</html>

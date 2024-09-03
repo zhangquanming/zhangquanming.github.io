@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>浅比较与深比较 | 全明笔记</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="张全明的个人笔记">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.484694f3.css" as="style"><link rel="preload" href="/assets/js/app.07d4e7d8.js" as="script"><link rel="preload" href="/assets/js/2.e756895e.js" as="script"><link rel="preload" href="/assets/js/18.c01d73d7.js" as="script"><link rel="prefetch" href="/assets/js/10.9dcd3981.js"><link rel="prefetch" href="/assets/js/11.7c3a4891.js"><link rel="prefetch" href="/assets/js/12.9123d821.js"><link rel="prefetch" href="/assets/js/13.dc2b3bbc.js"><link rel="prefetch" href="/assets/js/14.8e9572dd.js"><link rel="prefetch" href="/assets/js/15.0831d9fb.js"><link rel="prefetch" href="/assets/js/16.fff0091e.js"><link rel="prefetch" href="/assets/js/17.13d701e1.js"><link rel="prefetch" href="/assets/js/19.6d8da221.js"><link rel="prefetch" href="/assets/js/20.7e3bfbe7.js"><link rel="prefetch" href="/assets/js/21.d67b0029.js"><link rel="prefetch" href="/assets/js/22.a1d1221b.js"><link rel="prefetch" href="/assets/js/23.97f7c972.js"><link rel="prefetch" href="/assets/js/24.f25bbb61.js"><link rel="prefetch" href="/assets/js/25.886c2813.js"><link rel="prefetch" href="/assets/js/26.d354a60e.js"><link rel="prefetch" href="/assets/js/27.8165f251.js"><link rel="prefetch" href="/assets/js/28.38db902f.js"><link rel="prefetch" href="/assets/js/29.d089321c.js"><link rel="prefetch" href="/assets/js/3.c090ecd3.js"><link rel="prefetch" href="/assets/js/30.7f597fdf.js"><link rel="prefetch" href="/assets/js/31.00125d26.js"><link rel="prefetch" href="/assets/js/32.1b584e55.js"><link rel="prefetch" href="/assets/js/33.b6331f3f.js"><link rel="prefetch" href="/assets/js/34.021e8dad.js"><link rel="prefetch" href="/assets/js/35.2b1e189b.js"><link rel="prefetch" href="/assets/js/36.4643cf1b.js"><link rel="prefetch" href="/assets/js/37.ff936690.js"><link rel="prefetch" href="/assets/js/4.55092137.js"><link rel="prefetch" href="/assets/js/5.02018b5a.js"><link rel="prefetch" href="/assets/js/6.bd7b0c2a.js"><link rel="prefetch" href="/assets/js/7.711e75c5.js"><link rel="prefetch" href="/assets/js/8.35b709e8.js"><link rel="prefetch" href="/assets/js/9.029996af.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.484694f3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">全明笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/summary/" class="nav-link">
+  知识总结
+</a></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  工具类
+</a></div><div class="nav-item"><a href="/links/" class="nav-link">
+  学习资料
+</a></div><div class="nav-item"><a href="/code/" class="nav-link router-link-active">
+  手写代码
+</a></div><div class="nav-item"><a href="https://www.mingme.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/zhangquanming/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/summary/" class="nav-link">
+  知识总结
+</a></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  工具类
+</a></div><div class="nav-item"><a href="/links/" class="nav-link">
+  学习资料
+</a></div><div class="nav-item"><a href="/code/" class="nav-link router-link-active">
+  手写代码
+</a></div><div class="nav-item"><a href="https://www.mingme.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/zhangquanming/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>手写代码</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/code/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/code/防抖.html" class="sidebar-link">防抖</a></li><li><a href="/code/节流.html" class="sidebar-link">节流</a></li><li><a href="/code/浅比较与深比较.html" class="active sidebar-link">浅比较与深比较</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/code/浅比较与深比较.html#浅比较" class="sidebar-link">浅比较</a></li><li class="sidebar-sub-header"><a href="/code/浅比较与深比较.html#深比较" class="sidebar-link">深比较</a></li></ul></li><li><a href="/code/浅拷贝与深拷贝.html" class="sidebar-link">浅拷贝与深拷贝</a></li><li><a href="/code/Promise.html" class="sidebar-link">实现 Promise</a></li><li><a href="/code/new.html" class="sidebar-link">实现 new</a></li><li><a href="/code/instanceof.html" class="sidebar-link">实现 instanceof</a></li><li><a href="/code/compose.html" class="sidebar-link">实现 compose 函数</a></li><li><a href="/code/模拟setInterval.html" class="sidebar-link">settimeout 模拟实现 setinterval</a></li><li><a href="/code/call、apply、bind.html" class="sidebar-link">call、apply、bind</a></li><li><a href="/code/发布订阅模式.html" class="sidebar-link">发布订阅模式</a></li><li><a href="/code/扁平数组与JSON树结构互转.html" class="sidebar-link">扁平数组与 JSON 树结构互转</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="浅比较与深比较"><a href="#浅比较与深比较" class="header-anchor">#</a> 浅比较与深比较</h1> <h2 id="浅比较"><a href="#浅比较" class="header-anchor">#</a> 浅比较</h2> <p>浅比较也叫应用相等。在 js 中 <code>===</code> 是做浅比较，只检查两个对象是否指向同一个引用。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span>
+<span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a <span class="token operator">===</span> b<span class="token punctuation">)</span> <span class="token comment">// false</span>
+</code></pre></div><p>此时的 a 和 b 指向不同的对象引用，打印值为 <code>false</code></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span>
+<span class="token keyword">const</span> b <span class="token operator">=</span> a
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a <span class="token operator">===</span> b<span class="token punctuation">)</span> <span class="token comment">// true</span>
+</code></pre></div><p>此时的 a 和 b 指向的是同一对象的引用，打印值为 <code>true</code></p> <h2 id="深比较"><a href="#深比较" class="header-anchor">#</a> 深比较</h2> <p>深比较会检查两个对象所有的属性是否都相等，需要用递归的方式遍历两个对象的所有属性，不管对象是不是同一对象的引用。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> <span class="token function-variable function">deepEqual</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">===</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>
+    <span class="token keyword">typeof</span> x <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span>
+    x <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span>
+    <span class="token keyword">typeof</span> y <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span>
+    y <span class="token operator">!=</span> <span class="token keyword">null</span>
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 属性数量不一样</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">!==</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> prop <span class="token keyword">in</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>y<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>prop<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">deepEqual</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 不是对象且不满足 ===，直接返回 false</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">3/17/2022, 5:01:11 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/code/节流.html" class="prev">
+        节流
+      </a></span> <span class="next"><a href="/code/浅拷贝与深拷贝.html">
+        浅拷贝与深拷贝
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.07d4e7d8.js" defer></script><script src="/assets/js/2.e756895e.js" defer></script><script src="/assets/js/18.c01d73d7.js" defer></script>
+  </body>
+</html>

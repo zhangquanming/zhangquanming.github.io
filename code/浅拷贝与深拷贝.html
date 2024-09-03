@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>浅拷贝与深拷贝 | 全明笔记</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="张全明的个人笔记">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.484694f3.css" as="style"><link rel="preload" href="/assets/js/app.07d4e7d8.js" as="script"><link rel="preload" href="/assets/js/2.e756895e.js" as="script"><link rel="preload" href="/assets/js/17.13d701e1.js" as="script"><link rel="prefetch" href="/assets/js/10.9dcd3981.js"><link rel="prefetch" href="/assets/js/11.7c3a4891.js"><link rel="prefetch" href="/assets/js/12.9123d821.js"><link rel="prefetch" href="/assets/js/13.dc2b3bbc.js"><link rel="prefetch" href="/assets/js/14.8e9572dd.js"><link rel="prefetch" href="/assets/js/15.0831d9fb.js"><link rel="prefetch" href="/assets/js/16.fff0091e.js"><link rel="prefetch" href="/assets/js/18.c01d73d7.js"><link rel="prefetch" href="/assets/js/19.6d8da221.js"><link rel="prefetch" href="/assets/js/20.7e3bfbe7.js"><link rel="prefetch" href="/assets/js/21.d67b0029.js"><link rel="prefetch" href="/assets/js/22.a1d1221b.js"><link rel="prefetch" href="/assets/js/23.97f7c972.js"><link rel="prefetch" href="/assets/js/24.f25bbb61.js"><link rel="prefetch" href="/assets/js/25.886c2813.js"><link rel="prefetch" href="/assets/js/26.d354a60e.js"><link rel="prefetch" href="/assets/js/27.8165f251.js"><link rel="prefetch" href="/assets/js/28.38db902f.js"><link rel="prefetch" href="/assets/js/29.d089321c.js"><link rel="prefetch" href="/assets/js/3.c090ecd3.js"><link rel="prefetch" href="/assets/js/30.7f597fdf.js"><link rel="prefetch" href="/assets/js/31.00125d26.js"><link rel="prefetch" href="/assets/js/32.1b584e55.js"><link rel="prefetch" href="/assets/js/33.b6331f3f.js"><link rel="prefetch" href="/assets/js/34.021e8dad.js"><link rel="prefetch" href="/assets/js/35.2b1e189b.js"><link rel="prefetch" href="/assets/js/36.4643cf1b.js"><link rel="prefetch" href="/assets/js/37.ff936690.js"><link rel="prefetch" href="/assets/js/4.55092137.js"><link rel="prefetch" href="/assets/js/5.02018b5a.js"><link rel="prefetch" href="/assets/js/6.bd7b0c2a.js"><link rel="prefetch" href="/assets/js/7.711e75c5.js"><link rel="prefetch" href="/assets/js/8.35b709e8.js"><link rel="prefetch" href="/assets/js/9.029996af.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.484694f3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">全明笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/summary/" class="nav-link">
+  知识总结
+</a></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  工具类
+</a></div><div class="nav-item"><a href="/links/" class="nav-link">
+  学习资料
+</a></div><div class="nav-item"><a href="/code/" class="nav-link router-link-active">
+  手写代码
+</a></div><div class="nav-item"><a href="https://www.mingme.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/zhangquanming/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/summary/" class="nav-link">
+  知识总结
+</a></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  工具类
+</a></div><div class="nav-item"><a href="/links/" class="nav-link">
+  学习资料
+</a></div><div class="nav-item"><a href="/code/" class="nav-link router-link-active">
+  手写代码
+</a></div><div class="nav-item"><a href="https://www.mingme.net/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/zhangquanming/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>手写代码</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/code/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/code/防抖.html" class="sidebar-link">防抖</a></li><li><a href="/code/节流.html" class="sidebar-link">节流</a></li><li><a href="/code/浅比较与深比较.html" class="sidebar-link">浅比较与深比较</a></li><li><a href="/code/浅拷贝与深拷贝.html" class="active sidebar-link">浅拷贝与深拷贝</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/code/浅拷贝与深拷贝.html#浅拷贝" class="sidebar-link">浅拷贝</a></li><li class="sidebar-sub-header"><a href="/code/浅拷贝与深拷贝.html#深拷贝" class="sidebar-link">深拷贝</a></li></ul></li><li><a href="/code/Promise.html" class="sidebar-link">实现 Promise</a></li><li><a href="/code/new.html" class="sidebar-link">实现 new</a></li><li><a href="/code/instanceof.html" class="sidebar-link">实现 instanceof</a></li><li><a href="/code/compose.html" class="sidebar-link">实现 compose 函数</a></li><li><a href="/code/模拟setInterval.html" class="sidebar-link">settimeout 模拟实现 setinterval</a></li><li><a href="/code/call、apply、bind.html" class="sidebar-link">call、apply、bind</a></li><li><a href="/code/发布订阅模式.html" class="sidebar-link">发布订阅模式</a></li><li><a href="/code/扁平数组与JSON树结构互转.html" class="sidebar-link">扁平数组与 JSON 树结构互转</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="浅拷贝与深拷贝"><a href="#浅拷贝与深拷贝" class="header-anchor">#</a> 浅拷贝与深拷贝</h1> <h2 id="浅拷贝"><a href="#浅拷贝" class="header-anchor">#</a> 浅拷贝</h2> <p>什么是浅拷贝？如果是对象类型，只拷贝第一层，如果对象的属性又是一个对象，那么此时拷贝的就是这个属性的应用。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">shadowCopy</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> newObj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> prop <span class="token keyword">in</span> obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span>prop<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      newObj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span> <span class="token operator">=</span> obj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> newObj
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'litterStar'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token string">'1'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> obj2 <span class="token operator">=</span> <span class="token function">shadowCopy</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span>
+obj2<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'lucyStar'</span>
+obj2<span class="token punctuation">.</span>a<span class="token punctuation">.</span>b <span class="token operator">=</span> <span class="token string">'2'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span>
+<span class="token comment">// { name: 'litterStar', a: { b: '2' } }</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj2<span class="token punctuation">)</span>
+<span class="token comment">// { name: 'lucyStar', a: { b: '2' } }</span>
+</code></pre></div><p>可以看到修改 obj2 的 name 属性不会影响 obj1，但是修改 obj2 的 a 属性（是个对象）的 b，就会影响 obj1.a.b</p> <p>使用下面这些函数得到的都是浅拷贝：</p> <ul><li><code>Object.assign</code></li> <li><code>Array.prototype.slice()</code>、<code>Array.prototype.concat()</code></li> <li>使用拓展运算符实现的复制</li></ul> <h2 id="深拷贝"><a href="#深拷贝" class="header-anchor">#</a> 深拷贝</h2> <p>什么是深拷贝？ 浅拷贝是只拷贝一层，深拷贝会拷贝所有的属性。深拷贝前后两个对象互不影响。</p> <p>深拷贝的实现:</p> <ul><li><code>JSON.parse(JSON.stringify())</code></li> <li>手写递归函数</li> <li>函数库 lodash (或者其他库)</li></ul> <p><code>JSON.parse(JSON.stringify())</code>有存在以下问题:</p> <ul><li>无法解决循环引用问题</li> <li>无法拷贝特殊的对象，比如：RegExp, Date, Set, Map 等在序列化的时候会丢失。</li> <li>无法拷贝函数</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">fun</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">syb</span><span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">NaN</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token number">Infinity</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">reg</span> <span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^abc$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    <span class="token literal-property property">date</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">set</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">map</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+        <span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'张三'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'Author'</span><span class="token punctuation">]</span>
+      <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">text</span><span class="token operator">:</span><span class="token string">'aaa'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> cloneObj <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>cloneObj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 结果如下</span>
+<span class="token punctuation">{</span>
+  <span class="token literal-property property">reg</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">date</span><span class="token operator">:</span> <span class="token string">'2020-05-05T09:32:52.533Z'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">set</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">map</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token string">'aaa'</span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> obj<span class="token punctuation">.</span>date<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// object</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> cloneObj<span class="token punctuation">.</span>date<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// string</span>
+</code></pre></div><ol><li>如果 obj 里有函数，undefined，则序列化的结果会把函数或 undefined 丢失；</li> <li>如果 obj 里面有时间对象，则 JSON.stringify 后再 JSON.parse 的结果，时间将只是字符串的形式。而不是时间对象；</li> <li>如果 obj 里有 RegExp、 Set, Map 等，则序列化的结果将只得到空对象；</li> <li>如果 obj 里有 NaN、Infinity 和-Infinity，则序列化的结果会变成 null；</li> <li>循环引用，则直接报错 <code>TypeError: Converting circular structure to JSON</code></li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token string">'111'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+obj<span class="token punctuation">.</span>b <span class="token operator">=</span> obj
+
+<span class="token keyword">let</span> cloneObj <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>cloneObj<span class="token punctuation">)</span> <span class="token comment">// TypeError: Converting circular structure to JSON</span>
+</code></pre></div><p>写一个深拷贝，需要考虑下面几种情况：</p> <ol><li>属性是基本类型</li> <li>属性是对象</li> <li>属性是数组</li> <li>循环引用的情况，比如 <code>obj.prop1 = obj</code></li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>originObj<span class="token punctuation">,</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> originObj <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 判断是都否为数组</span>
+    <span class="token keyword">const</span> cloneObj <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>originObj<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token comment">// 判断是否为循环引用</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>originObj<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>originObj<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    map<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>originObj<span class="token punctuation">,</span> cloneObj<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> prop <span class="token keyword">in</span> originObj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      cloneObj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>originObj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">,</span> map<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> cloneObj
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> originObj
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token string">'111'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+obj1<span class="token punctuation">.</span>obj2 <span class="token operator">=</span> obj1
+
+<span class="token keyword">const</span> aa <span class="token operator">=</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>obj1<span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>aa<span class="token punctuation">)</span>
+<span class="token comment">// { a: '111', obj2: [Circular] }</span>
+</code></pre></div><p>上面的实现存在一些问题:</p> <ol><li>一些特殊类型的对象，比如 Date, 正则，Set，Map 等没有处理</li> <li>使用 typeof 来判断是否是对象是有问题的，typeof null 的结果也是 'object'</li></ol> <p>完善版本</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 是否为引用类型</span>
+<span class="token keyword">function</span> <span class="token function">isObject</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">typeof</span> obj <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">||</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> obj <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">&amp;&amp;</span> obj <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>originObj<span class="token punctuation">,</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 判断是否为基本数据类型</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>originObj<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 判断是否为循环引用</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>originObj<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>originObj<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 判断是否为几种特殊需要处理的类型</span>
+    <span class="token keyword">let</span> type <span class="token operator">=</span> <span class="token punctuation">[</span>Date<span class="token punctuation">,</span> RegExp<span class="token punctuation">,</span> Set<span class="token punctuation">,</span> Map<span class="token punctuation">,</span> WeakMap<span class="token punctuation">,</span> WeakSet<span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>type<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>originObj<span class="token punctuation">.</span>constructor<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">originObj<span class="token punctuation">.</span>constructor</span><span class="token punctuation">(</span>originObj<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 其他类型</span>
+    <span class="token keyword">let</span> allDesc <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptors</span><span class="token punctuation">(</span>originObj<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> cloneObj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>originObj<span class="token punctuation">)</span><span class="token punctuation">,</span> allDesc<span class="token punctuation">)</span>
+
+    <span class="token comment">// Reflect.ownKeys 可以获取到</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> prop <span class="token keyword">of</span> Reflect<span class="token punctuation">.</span><span class="token function">ownKeys</span><span class="token punctuation">(</span>originObj<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      cloneObj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span> <span class="token operator">=</span>
+        <span class="token function">isObject</span><span class="token punctuation">(</span>originObj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> originObj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span> <span class="token operator">!==</span> <span class="token string">'function'</span>
+          <span class="token operator">?</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>originObj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">,</span> map<span class="token punctuation">)</span>
+          <span class="token operator">:</span> originObj<span class="token punctuation">[</span>prop<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> cloneObj
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> originObj
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">fun</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">syb</span><span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">NaN</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token number">Infinity</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">reg</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^abc$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+  <span class="token literal-property property">date</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">set</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">map</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'张三'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'Author'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token string">'aaa'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> cloneObj <span class="token operator">=</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>cloneObj<span class="token punctuation">)</span>
+</code></pre></div><p>打印的结果如下:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  <span class="token literal-property property">fun</span><span class="token operator">:</span> <span class="token punctuation">[</span>Function<span class="token operator">:</span> fun<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">syb</span><span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token number">NaN</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">c</span><span class="token operator">:</span> <span class="token number">Infinity</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">reg</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^abc$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+  <span class="token literal-property property">date</span><span class="token operator">:</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">05</span><span class="token operator">-</span>05T13<span class="token operator">:</span><span class="token number">57</span><span class="token operator">:</span><span class="token number">14</span><span class="token punctuation">.</span>904Z<span class="token punctuation">,</span>
+  <span class="token literal-property property">set</span><span class="token operator">:</span> Set <span class="token punctuation">{</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">map</span><span class="token operator">:</span> Map <span class="token punctuation">{</span> <span class="token string">'name'</span> <span class="token operator">=&gt;</span> <span class="token string">'张三'</span><span class="token punctuation">,</span> <span class="token string">'title'</span> <span class="token operator">=&gt;</span> <span class="token string">'Author'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token string">'aaa'</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">3/17/2022, 5:01:11 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/code/浅比较与深比较.html" class="prev">
+        浅比较与深比较
+      </a></span> <span class="next"><a href="/code/Promise.html">
+        实现 Promise
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.07d4e7d8.js" defer></script><script src="/assets/js/2.e756895e.js" defer></script><script src="/assets/js/17.13d701e1.js" defer></script>
+  </body>
+</html>
